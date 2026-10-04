@@ -1,0 +1,5 @@
+data/spotify_full.csv
+data/spotify_clean.csv
+data/spotify_full.zip
+scripts/__pycache__/
+zip.ipynb
