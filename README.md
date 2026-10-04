@@ -50,5 +50,5 @@ The final cleaned dataset contains 1,182,354 rows and 27 columns.
 ## GitHub Submission
 
 - Branch: `aarav-vanamareddy`
-- Branch URL: [ADD AFTER PUBLISHING BRANCH]
-- Commit ID: [ADD FINAL COMMIT ID]
+- Branch URL: `https://github.com/AaravVanamareddy/DSO576_Music_Project/tree/aarav-vanamareddy`
+- Commit ID: `1cd7c2be7dd12bd55c982597a9797bdfd6d1f431`
