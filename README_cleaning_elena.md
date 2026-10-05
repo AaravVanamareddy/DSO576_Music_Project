@@ -21,7 +21,7 @@ The original dataset is not uploaded to GitHub because of its large file size.
 
 My individual Homework 6 work is located on the following branch:
 
-`cleaning-elenawei`
+`elenawei`
 
 ## Environment Setup
 
