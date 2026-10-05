@@ -1,0 +1,33 @@
+# Ignore raw and full dataset files
+archive/data/full/*.csv
+archive/data/full/**/*.csv
+archive/**/*.csv
+**/spotify_full.csv
+full_cleaned_dataset.csv
+full_dataset.csv
+
+# Ignore Python virtual environments
+.venv/
+venv/
+env/
+**/venv/
+**/.venv/
+
+# Ignore Python caches and generated files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Ignore temporary and editor files
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+*.log

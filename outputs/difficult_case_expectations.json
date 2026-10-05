@@ -1,0 +1,22 @@
+{
+  "case_1_missing_album_name": {
+    "expected": "album_name is missing for the selected record",
+    "reason": "A catalog row may legitimately not have album metadata, and this should remain missing rather than being imputed."
+  },
+  "case_2_non_charting_track": {
+    "expected": "chart_peak_position and weeks_on_chart are missing",
+    "reason": "Non-charting tracks are valid and should not be treated as data errors."
+  },
+  "case_3_anomaly_flag": {
+    "expected": "has_anomaly is True",
+    "reason": "The dataset intentionally flags unusual records; they remain part of the raw catalog but should be highlighted."
+  },
+  "case_4_high_popularity_track": {
+    "expected": "track_popularity is between 90 and 100 and genre_l1/decade are present",
+    "reason": "The main metric is Spotify popularity score and should remain valid for the leading genre/decade comparisons."
+  },
+  "case_5_estimated_streams": {
+    "expected": "streams_total_estimated is True and streams_total is not missing",
+    "reason": "The stream count is modeled/estimated and should remain labeled as such rather than treated as direct popularity."
+  }
+}
