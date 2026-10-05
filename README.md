@@ -13,7 +13,9 @@ This repository documents a reproducible cleaning workflow for the Spotify archi
 - Secondary metric: `streams_total` only as a supplemental metric and clearly labeled as modeled/estimated
 - Business question supported by the data: how Spotify track popularity differs across `genre_l1` and `decade`
 - Branch name: `ian-yu`
-- Branch URL: https://github.com/AaravVanamareddy/DSO576_Music_Project.git
+- Branch URL: https://github.com/AaravVanamareddy/DSO576_Music_Project/tree/ian-yu
+- Submitted code commit ID: `e75a85375249f5fb864522c332d3d84ef71ac363`
+- Note: This commit ID is the submitted code version and must remain associated with the submitted implementation even after later documentation updates.
 
 ## Project files
 

@@ -3,10 +3,12 @@
 ## Project status
 
 - Branch: `ian-yu`
+- Branch URL: https://github.com/AaravVanamareddy/DSO576_Music_Project/tree/ian-yu
 - Remote repository: https://github.com/AaravVanamareddy/DSO576_Music_Project.git
+- Submitted code commit ID: `e75a85375249f5fb864522c332d3d84ef71ac363`
 - Source dataset: `C:/Users/ian83/OneDrive/文件/DSO576_Music_Project/archive/data/full/spotify_full.csv`
 - Source metadata version: 1.0.0
-- Current repository state: work remains uncommitted and unpushed, as requested.
+- Current repository state: the code commit is submitted; later documentation-only updates do not replace the submitted implementation commit ID.
 
 ## 1. Data dictionary and row meaning
 
