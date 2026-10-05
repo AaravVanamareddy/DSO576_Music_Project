@@ -1,0 +1,7 @@
+# Original and cleaned large datasets
+data/raw/
+data/cleaned/
+
+# Python temporary files
+__pycache__/
+.ipynb_checkpoints/

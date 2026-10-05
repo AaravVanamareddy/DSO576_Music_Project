@@ -1,0 +1,661 @@
+{
+  "dataset_name": "Spotify Music Features Dataset",
+  "description": "Large-scale Spotify track dataset covering 1.18M tracks across six decades. Combines raw Spotify audio features with engineered mood, affect, sonic identity, artist-level, and decade-trend signals for recommendation, hit prediction, genre classification, and longitudinal music analysis.",
+  "version": "1.0.0",
+  "created_at": "2026-07-25T00:14:59.351230+00:00Z",
+  "row_count": 1182354,
+  "column_count": 83,
+  "columns": [
+    "track_id",
+    "spotify_id",
+    "title",
+    "title_normalized",
+    "track_artist",
+    "album_id",
+    "album_name",
+    "release_year",
+    "release_date",
+    "duration_ms",
+    "explicit_flag",
+    "has_audio_features",
+    "source_dataset",
+    "energy",
+    "valence",
+    "danceability",
+    "acousticness",
+    "instrumentalness",
+    "speechiness",
+    "liveness",
+    "loudness",
+    "tempo",
+    "key",
+    "key_name",
+    "mode",
+    "mode_name",
+    "time_signature",
+    "genre_l1",
+    "genre_l2",
+    "genre_raw",
+    "track_popularity",
+    "streams_total",
+    "streams_source",
+    "streams_total_estimated",
+    "stream_density",
+    "chart_peak_position",
+    "weeks_on_chart",
+    "chart_date_first",
+    "popularity_imputed_aug",
+    "track_age_days",
+    "era",
+    "decade",
+    "energy_loudness_ratio",
+    "mood_index",
+    "acoustic_synthetic_ratio",
+    "emotional_arc",
+    "tempo_band",
+    "is_likely_instrumental",
+    "is_likely_live",
+    "is_likely_spoken_word",
+    "loudness_war_index",
+    "novelty_score",
+    "hit_probability",
+    "mood_cluster",
+    "taste_cluster",
+    "fp_energy",
+    "fp_valence",
+    "fp_danceability",
+    "fp_acousticness",
+    "fp_instrumentalness",
+    "fp_speechiness",
+    "fp_liveness",
+    "mean_energy_by_artist",
+    "sonic_evolution_score",
+    "genre_breadth",
+    "catalog_size",
+    "career_start_year",
+    "career_end_year",
+    "career_span_years",
+    "longevity_score",
+    "hit_rate",
+    "artist_stream_mean_log",
+    "artist_stream_median_log",
+    "mean_energy_by_decade",
+    "mean_valence_by_decade",
+    "mean_tempo_by_decade",
+    "mean_loudness_by_decade",
+    "acousticness_decline_idx",
+    "danceability_trend",
+    "decade_track_count",
+    "anomaly_flags",
+    "has_anomaly",
+    "release_year_precision_aug"
+  ],
+  "schema": [
+    {
+      "name": "track_id",
+      "type": "string",
+      "description": "Full Spotify URI for the track (e.g. spotify:track:...)"
+    },
+    {
+      "name": "spotify_id",
+      "type": "string",
+      "description": "Bare Spotify track ID (22-character base-62 string)"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Original track title as returned by the Spotify API"
+    },
+    {
+      "name": "track_artist",
+      "type": "string",
+      "description": "Primary artist name"
+    },
+    {
+      "name": "release_year",
+      "type": "int",
+      "description": "Four-digit release year; precision flag in release_year_precision_aug"
+    },
+    {
+      "name": "duration_ms",
+      "type": "int",
+      "unit": "ms",
+      "description": "Track duration in milliseconds"
+    },
+    {
+      "name": "energy",
+      "type": "float",
+      "description": "Perceptual intensity and activity; 0.0 (calm) to 1.0 (intense). Dataset mean: 0.641"
+    },
+    {
+      "name": "valence",
+      "type": "float",
+      "description": "Musical positiveness; 1.0 = euphoric, 0.0 = sad or tense. Dataset mean: 0.457"
+    },
+    {
+      "name": "danceability",
+      "type": "float",
+      "description": "Suitability for dancing based on tempo, rhythm stability, and beat strength. Dataset mean: 0.540"
+    },
+    {
+      "name": "acousticness",
+      "type": "float",
+      "description": "Confidence that the track is acoustic; values near 1.0 indicate no electronic amplification. Dataset mean: 0.319"
+    },
+    {
+      "name": "instrumentalness",
+      "type": "float",
+      "description": "Predicted absence of vocals; values above 0.5 are treated as likely instrumental"
+    },
+    {
+      "name": "speechiness",
+      "type": "float",
+      "description": "Detects spoken-word content; high values indicate podcasts, comedy, or audiobooks"
+    },
+    {
+      "name": "liveness",
+      "type": "float",
+      "description": "Detects audience presence; values above 0.8 strongly suggest a live recording"
+    },
+    {
+      "name": "loudness",
+      "type": "float",
+      "unit": "dBFS",
+      "description": "Overall track loudness; used in energy_loudness_ratio and loudness_war_index"
+    },
+    {
+      "name": "tempo",
+      "type": "float",
+      "unit": "BPM",
+      "description": "Estimated beats per minute. Dataset mean: 121.4 BPM"
+    },
+    {
+      "name": "key",
+      "type": "int",
+      "description": "Pitch class integer (0=C, 1=C#, ..., 11=B) using standard Pitch Class notation"
+    },
+    {
+      "name": "key_name",
+      "type": "string",
+      "description": "Human-readable key name (e.g. C, C#, D)"
+    },
+    {
+      "name": "mode",
+      "type": "int",
+      "description": "Modality; 1 = major (63%), 0 = minor (37%)"
+    },
+    {
+      "name": "genre_l1",
+      "type": "string",
+      "description": "Top-level genre category; 17 values including Electronic, Rock, Pop, Metal, Latin, Classical, Folk, R&B, Hip-Hop, Jazz, Blues, Country, Reggae, Gospel, World, Soundtrack, Instrumental"
+    },
+    {
+      "name": "genre_l2",
+      "type": "string",
+      "description": "Subgenre label; 99 unique values (e.g. Ambient, Alt-Rock, K-Pop, Black Metal, Forró, Dancehall)"
+    },
+    {
+      "name": "genre_raw",
+      "type": "string",
+      "description": "Original Spotify genre tag string retained verbatim"
+    },
+    {
+      "name": "track_popularity",
+      "type": "int",
+      "description": "Spotify popularity score 0–100. Dataset mean: 18.7, median: 15.0; ~4,878 tracks score ≥70"
+    },
+    {
+      "name": "streams_total",
+      "type": "float",
+      "description": "Total estimated stream count. Median: 3.38M, max: 1.59B"
+    },
+    {
+      "name": "streams_total_estimated",
+      "type": "bool",
+      "description": "True if streams_total was modelled rather than directly sourced"
+    },
+    {
+      "name": "stream_density",
+      "type": "float",
+      "description": "Streams normalised by track_age_days; measures streaming momentum"
+    },
+    {
+      "name": "chart_peak_position",
+      "type": "float",
+      "nullable": true,
+      "description": "Highest chart position achieved; present for ~14,900 charting tracks, null otherwise"
+    },
+    {
+      "name": "weeks_on_chart",
+      "type": "float",
+      "nullable": true,
+      "description": "Total weeks the track appeared on tracked charts; null for non-charting tracks"
+    },
+    {
+      "name": "track_age_days",
+      "type": "float",
+      "unit": "days",
+      "description": "Days elapsed since release_date at dataset generation time"
+    },
+    {
+      "name": "era",
+      "type": "string",
+      "description": "Broad era label: pre-2000, 2000-2010, 2011-2020, 2021+"
+    },
+    {
+      "name": "decade",
+      "type": "int",
+      "description": "Release decade as integer (e.g. 1990, 2000, 2010, 2020)"
+    },
+    {
+      "name": "emotional_arc",
+      "type": "string",
+      "description": "Valence × energy quadrant: Q1_euphoric, Q2_angry, Q3_depressed, Q4_content"
+    },
+    {
+      "name": "tempo_band",
+      "type": "string",
+      "description": "BPM bin: very_slow, slow, medium, fast, very_fast"
+    },
+    {
+      "name": "mood_index",
+      "type": "float",
+      "description": "Continuous composite of valence and energy"
+    },
+    {
+      "name": "acoustic_synthetic_ratio",
+      "type": "float",
+      "description": "Acousticness relative to energy; separates organic from electronically produced sound"
+    },
+    {
+      "name": "energy_loudness_ratio",
+      "type": "float",
+      "description": "Normalised loudness relative to energy; captures loudness-war dynamics"
+    },
+    {
+      "name": "loudness_war_index",
+      "type": "float",
+      "description": "Derived measure of dynamic compression; higher values indicate more compressed masters"
+    },
+    {
+      "name": "is_likely_instrumental",
+      "type": "bool",
+      "description": "True when instrumentalness exceeds the instrumental classification threshold"
+    },
+    {
+      "name": "is_likely_live",
+      "type": "bool",
+      "description": "True when liveness exceeds the live recording classification threshold"
+    },
+    {
+      "name": "is_likely_spoken_word",
+      "type": "bool",
+      "description": "True when speechiness indicates primarily spoken-word content"
+    },
+    {
+      "name": "novelty_score",
+      "type": "float",
+      "description": "How sonically distinct the track is relative to its genre's typical audio profile"
+    },
+    {
+      "name": "hit_probability",
+      "type": "float",
+      "description": "Composite score estimating hit likelihood from audio features and popularity signals"
+    },
+    {
+      "name": "mood_cluster",
+      "type": "string",
+      "description": "KMeans-derived mood archetype: happy_energetic, angry_intense, melancholic, sad_slow, calm_positive"
+    },
+    {
+      "name": "taste_cluster",
+      "type": "string",
+      "nullable": true,
+      "description": "Listener taste segment assignment; sparse — populated for a small subset of tracks"
+    },
+    {
+      "name": "fp_energy",
+      "type": "float",
+      "description": "Energy component of the 7-dimensional sonic fingerprint vector"
+    },
+    {
+      "name": "fp_valence",
+      "type": "float",
+      "description": "Valence component of the 7-dimensional sonic fingerprint vector"
+    },
+    {
+      "name": "fp_danceability",
+      "type": "float",
+      "description": "Danceability component of the 7-dimensional sonic fingerprint vector"
+    },
+    {
+      "name": "fp_acousticness",
+      "type": "float",
+      "description": "Acousticness component of the 7-dimensional sonic fingerprint vector"
+    },
+    {
+      "name": "fp_instrumentalness",
+      "type": "float",
+      "description": "Instrumentalness component of the 7-dimensional sonic fingerprint vector"
+    },
+    {
+      "name": "fp_speechiness",
+      "type": "float",
+      "description": "Speechiness component of the 7-dimensional sonic fingerprint vector"
+    },
+    {
+      "name": "fp_liveness",
+      "type": "float",
+      "description": "Liveness component of the 7-dimensional sonic fingerprint vector"
+    },
+    {
+      "name": "mean_energy_by_artist",
+      "type": "float",
+      "description": "Artist's characteristic energy level averaged across their catalog in-dataset"
+    },
+    {
+      "name": "sonic_evolution_score",
+      "type": "float",
+      "description": "Measures how much the artist's audio profile has shifted over their career"
+    },
+    {
+      "name": "genre_breadth",
+      "type": "float",
+      "description": "Number of distinct L2 subgenres represented in the artist's catalog"
+    },
+    {
+      "name": "catalog_size",
+      "type": "float",
+      "description": "Total number of tracks attributed to the artist in this dataset"
+    },
+    {
+      "name": "career_start_year",
+      "type": "int",
+      "description": "Year of the artist's earliest release in this dataset"
+    },
+    {
+      "name": "career_end_year",
+      "type": "int",
+      "description": "Year of the artist's most recent release in this dataset"
+    },
+    {
+      "name": "career_span_years",
+      "type": "float",
+      "description": "Years between career_start_year and career_end_year"
+    },
+    {
+      "name": "longevity_score",
+      "type": "float",
+      "description": "Composite of career span, catalog size, and continued chart presence"
+    },
+    {
+      "name": "hit_rate",
+      "type": "float",
+      "description": "Proportion of the artist's tracks exceeding the high-popularity threshold"
+    },
+    {
+      "name": "artist_stream_mean_log",
+      "type": "float",
+      "description": "Log-transformed mean stream count across all of the artist's tracks"
+    },
+    {
+      "name": "artist_stream_median_log",
+      "type": "float",
+      "description": "Log-transformed median stream count across all of the artist's tracks"
+    },
+    {
+      "name": "mean_energy_by_decade",
+      "type": "float",
+      "description": "Population mean energy for all tracks in the same release decade"
+    },
+    {
+      "name": "mean_valence_by_decade",
+      "type": "float",
+      "description": "Population mean valence for all tracks in the same release decade"
+    },
+    {
+      "name": "mean_tempo_by_decade",
+      "type": "float",
+      "unit": "BPM",
+      "description": "Population mean tempo for all tracks in the same release decade"
+    },
+    {
+      "name": "mean_loudness_by_decade",
+      "type": "float",
+      "unit": "dBFS",
+      "description": "Population mean loudness for all tracks in the same release decade"
+    },
+    {
+      "name": "acousticness_decline_idx",
+      "type": "float",
+      "description": "Measures the documented cross-decade decline in acoustic recording; higher = more acoustic relative to decade baseline"
+    },
+    {
+      "name": "danceability_trend",
+      "type": "float",
+      "description": "Directional trend in danceability from the artist's earliest to latest release decade"
+    },
+    {
+      "name": "decade_track_count",
+      "type": "int",
+      "description": "Number of tracks in this dataset from the same release decade"
+    },
+    {
+      "name": "anomaly_flags",
+      "type": "string",
+      "nullable": true,
+      "description": "Pipe-delimited anomaly type labels. Values: LIKELY_PODCAST_OR_AUDIOBOOK, LIKELY_CLIPPED, EXTREME_DURATION, LIKELY_SILENT_TRACK, GENRE_AUDIO_MISMATCH. Empty string if no anomaly"
+    },
+    {
+      "name": "has_anomaly",
+      "type": "bool",
+      "description": "True if any anomaly flag is set; ~21,400 tracks flagged (~1.8% of dataset)"
+    },
+    {
+      "name": "popularity_imputed_aug",
+      "type": "bool",
+      "description": "True if track_popularity was imputed rather than directly sourced"
+    },
+    {
+      "name": "release_year_precision_aug",
+      "type": "bool",
+      "description": "True if release_year was inferred at year precision rather than from a full release_date"
+    }
+  ],
+  "feature_groups": {
+    "core_track": [
+      "track_id",
+      "spotify_id",
+      "title",
+      "title_normalized",
+      "track_artist",
+      "album_id",
+      "album_name",
+      "release_year",
+      "release_date",
+      "duration_ms",
+      "explicit_flag",
+      "has_audio_features",
+      "source_dataset"
+    ],
+    "audio_features": [
+      "energy",
+      "valence",
+      "danceability",
+      "acousticness",
+      "instrumentalness",
+      "speechiness",
+      "liveness",
+      "loudness",
+      "tempo",
+      "key",
+      "key_name",
+      "mode",
+      "mode_name",
+      "time_signature"
+    ],
+    "genre": [
+      "genre_l1",
+      "genre_l2",
+      "genre_raw"
+    ],
+    "popularity": [
+      "track_popularity",
+      "streams_total",
+      "streams_source",
+      "streams_total_estimated",
+      "stream_density",
+      "chart_peak_position",
+      "weeks_on_chart",
+      "chart_date_first",
+      "popularity_imputed_aug",
+      "hit_probability",
+      "novelty_score"
+    ],
+    "temporal": [
+      "release_year",
+      "release_date",
+      "track_age_days",
+      "era",
+      "decade",
+      "release_year_precision_aug"
+    ],
+    "affect_mood": [
+      "energy_loudness_ratio",
+      "mood_index",
+      "acoustic_synthetic_ratio",
+      "emotional_arc",
+      "tempo_band",
+      "is_likely_instrumental",
+      "is_likely_live",
+      "is_likely_spoken_word",
+      "loudness_war_index",
+      "mood_cluster",
+      "taste_cluster"
+    ],
+    "sonic_fingerprint": [
+      "fp_energy",
+      "fp_valence",
+      "fp_danceability",
+      "fp_acousticness",
+      "fp_instrumentalness",
+      "fp_speechiness",
+      "fp_liveness"
+    ],
+    "artist_level": [
+      "mean_energy_by_artist",
+      "sonic_evolution_score",
+      "genre_breadth",
+      "catalog_size",
+      "career_start_year",
+      "career_end_year",
+      "career_span_years",
+      "longevity_score",
+      "hit_rate",
+      "artist_stream_mean_log",
+      "artist_stream_median_log"
+    ],
+    "decade_trends": [
+      "mean_energy_by_decade",
+      "mean_valence_by_decade",
+      "mean_tempo_by_decade",
+      "mean_loudness_by_decade",
+      "acousticness_decline_idx",
+      "danceability_trend",
+      "decade_track_count"
+    ],
+    "anomaly": [
+      "anomaly_flags",
+      "has_anomaly"
+    ],
+    "target": [
+      "track_popularity",
+      "streams_total",
+      "hit_probability",
+      "chart_peak_position",
+      "mood_cluster",
+      "emotional_arc",
+      "genre_l1",
+      "is_likely_instrumental",
+      "has_anomaly"
+    ]
+  },
+  "output_files": [
+    "data/full/spotify_full.csv.gz",
+    "data/features/spotify_features.csv",
+    "data/features/spotify_albums.csv",
+    "data/features/spotify_artists.csv",
+    "data/features/spotify_artist_features.csv",
+    "data/features/spotify_audio_features.csv",
+    "data/features/spotify_decade_trends.csv",
+    "data/features/spotify_genre_tags.csv",
+    "data/features/spotify_playlist_cooccurrence.csv",
+    "data/features/spotify_popularity_metrics.csv",
+    "data/features/taste_cluster_report.csv",
+    "data/splits/spotify_train.csv.gz",
+    "data/splits/spotify_val.csv.gz",
+    "data/splits/spotify_test.csv.gz",
+    "data/subsets/spotify_high_popularity.csv",
+    "data/subsets/spotify_instrumental_acoustic.csv",
+    "data/subsets/spotify_pre2000.csv",
+    "data/subsets/spotify_streaming_era.csv"
+  ],
+  "platform": "ML Data Platform v1.0.0",
+  "license": "Open Data Commons Open Database License (ODbL) v1.0",
+  "sources": [
+    {
+      "name": "TidyTuesday 2020-01-21 Spotify Data",
+      "license": "Database Contents License (DbCL) v1.0",
+      "url": "https://github.com/rfordatascience/tidytuesday/tree/main/data/2020/2020-01-21"
+    },
+    {
+      "name": "30000 Spotify Songs",
+      "note": "Duplicate of TidyTuesday source",
+      "license": "Database Contents License (DbCL) v1.0",
+      "url": "https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-songs"
+    },
+    {
+      "name": "Spotify Dataset",
+      "license": "MIT",
+      "url": "https://www.kaggle.com/datasets/ambaliyagati/spotify-dataset-for-playing-around-with-sql"
+    },
+    {
+      "name": "60000 Spotify Songs",
+      "license": "Database Contents License (DbCL) v1.0",
+      "url": "https://www.kaggle.com/datasets/joebeachcapital/57651-spotify-songs"
+    },
+    {
+      "name": "Spotify 1Million Tracks",
+      "license": "Open Data Commons Open Database License (ODbL) v1.0",
+      "url": "https://www.kaggle.com/datasets/amitanshjoshi/spotify-1million-tracks"
+    }
+  ],
+  "year_range": "1957-2023",
+  "eras": [
+    "pre-2000",
+    "2000-2010",
+    "2011-2020",
+    "2021+"
+  ],
+  "genre_taxonomy_levels": 3,
+  "genres_l1_count": 17,
+  "genres_l2_count": 99,
+  "unique_artists": 69414,
+  "unique_albums": 19918,
+  "audio_feature_dimensions": 7,
+  "anomaly_types": [
+    "LIKELY_PODCAST_OR_AUDIOBOOK",
+    "LIKELY_CLIPPED",
+    "EXTREME_DURATION",
+    "LIKELY_SILENT_TRACK",
+    "GENRE_AUDIO_MISMATCH"
+  ],
+  "anomaly_rate": 0.018,
+  "charting_tracks": 14913,
+  "high_popularity_tracks": 4878,
+  "features_file_exclusive_columns": [
+    "artist_followers",
+    "sonic_fingerprint",
+    "genre_fragmentation_index"
+  ]
+}

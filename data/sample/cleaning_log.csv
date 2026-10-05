@@ -1,0 +1,24 @@
+rule,check,metric,expected,actual,status
+1,canonical track_id,repeated track_id values,0,0,PASS
+1,spotify_id validation,repeated spotify_id values,0,0,PASS
+1,ID-pair validation,repeated ID pairs,0,0,PASS
+2,retain all rows,final rows,1182354,1182354,PASS
+2,exact duplicates,duplicate rows beyond first,0,0,PASS
+3,retain original columns,original columns retained,83,83,PASS
+4,string typing,original text columns preserved,all,all,PASS
+5,nullable conversions,total conversion failures,0,0,PASS
+6,trim track_artist,values changed,30,30,PASS
+7,remove title DEL,values changed,1,1,PASS
+8,retain missing title/artist,union count,20,20,PASS
+9,dashboard eligibility,False count,20,20,PASS
+10,long duration flag,True count,407,407,PASS
+11,invalid time signature flag,True count,1228,1228,PASS
+12,missing time signature,missing count,22590,22590,PASS
+13,streams_status direct,count,9600,9600,PASS
+13,streams_status estimated,count,1172754,1172754,PASS
+13,streams_status missing,count,0,0,PASS
+13,streams_status unknown,count,0,0,PASS
+14,preserve missing streams,missing streams,0,0,PASS
+15,retain unusual values,rows removed for unusual values,0,0,PASS
+16,retain hit_probability,column present,True,True,PASS
+17,protect raw source,SHA-256 unchanged,DD195436D5943929A1321D111B45B5560AE0EC4A743F187F58F3BF5B82D1E914,DD195436D5943929A1321D111B45B5560AE0EC4A743F187F58F3BF5B82D1E914,PASS
