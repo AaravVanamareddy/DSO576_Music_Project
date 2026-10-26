@@ -6,6 +6,7 @@
 | Arman |Exclude Estimated Streams toggle| Median Streams|
 | Yolanda | Track Profile / Add to Shortlist | Top 20% Group Count |
 | Elena | Genre Filter / Cohort Update | Median Popularity |
+| Ian Yu | Audio Feature Comparison | Top Group Mean Energy |
 
 ## Findings
 
