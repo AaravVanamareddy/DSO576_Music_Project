@@ -35,6 +35,7 @@
 
 **Requested change:** None for the tested calculation. Full-data and other-filter validation remain untested.
 
+<<<<<<< HEAD
 
 ### CHECK-002 – Median Streams
 
@@ -66,3 +67,17 @@ The test: screenshot with the toggle off, then tick it and screenshot again. tra
 REVEALED  48 estimated and only 2 real, Flowers and Blinding Lights. These are the 2 that remain 
 
 **Requested change:** Have a warning icon when the numbers drop to a certain amount. When toggle is on, change the label to something like "actual streams." Also, only the streams numbers should change, so the toggle shouldn’t remove tracks from the other metrics.
+=======
+### CHECK-002 — Genre Filter / Cohort Update and Median Popularity
+
+**Auditor:** Elena Wei
+**Status:** Passed for tested sample
+
+**Expected:** Selecting a broad genre should restrict the cohort to that genre and recalculate the cohort-dependent results. Median popularity should equal the median of the nonmissing `track_popularity` values in the filtered cohort.
+
+**Actual:** With release years 2001–2023 and Popularity selected, changing Broad genre from All genres to Pop reduced the cohort from 50 to 5 tracks and the Top 20% group from 10 to 1 track. All five preview records were Pop. The dashboard displayed median popularity of 29.0.
+
+**Evidence:** The five Pop popularity values were 100, 98, 29, 18, and 0. Manually sorting them as 0, 18, 29, 98, and 100 gives a median of 29, matching the dashboard. The filtering logic in `filter_cohort()` uses `genre_l1`, the inclusive release-year range, and nonmissing values for the selected metric.
+
+**Requested change:** None for the tested Genre Filter and Median Popularity claims. Other genres, release-year ranges, and the full dataset remain untested.
+>>>>>>> 18455f4 (Add Elena genre and median audit results)
