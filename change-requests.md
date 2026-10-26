@@ -5,6 +5,7 @@
 | Member | Feature | Number |
 |---|---|---|
 | Yolanda | Track Profile / Add to Shortlist | Top 20% Group Count |
+| Elena | Genre Filter / Cohort Update | Median Popularity |
 
 ## Findings
 
