@@ -82,3 +82,17 @@ REVEALED  48 estimated and only 2 real, Flowers and Blinding Lights. These are t
 
 **Requested change:** None for the tested Genre Filter and Median Popularity claims. Other genres, release-year ranges, and the full dataset remain untested.
 >>>>>>> 18455f4 (Add Elena genre and median audit results)
+
+
+### CHECK-003 — Audio Feature Comparison / Top Group Mean Energy
+
+**Auditor:** Ian Yu
+**Status:** Passed for tested sample
+
+**Expected:** With All genres, release years 2001–2023, Popularity, and Top 20%, the audio feature comparison should show the mean Energy for the Top and Other groups, with valid counts. Energy is on a 0–1 scale.
+
+**Actual:** The app showed Top mean Energy = 0.7207 (Valid N = 10) and Other mean Energy = 0.592 (Valid N = 40).
+
+**Evidence:** I opened Overview using the settings above and inspected the Audio Feature Comparison chart and table. The sample cohort contained 50 tracks, split into 10 Top tracks and 40 Other tracks. An independent pandas calculation from `spotify_cleaned_sample.csv` returned Top mean = 0.720700 and Other mean = 0.591969, which rounds to the displayed values.
+
+**Requested change:** None for the tested sample. The full dataset and other filter settings remain untested.
