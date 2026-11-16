@@ -65,3 +65,14 @@ The publicly accessible Streamlit deployment is served from the personal
 hosting fork `yolandaL597/DSO576_Music_Project`, branch `main`, with `app.py`
 as its entry point. The team repository above remains the required code
 submission link.
+
+
+## Known limitation
+The "Exclude estimated streams" toggle keeps only tracks with real stream
+counts. In the current data that is 2 of 50 tracks, so metrics with the toggle
+on are based on a very small sample. See CR-002 in change-requests.md.
+
+## Opening the app
+The app is hosted on Streamlit Community Cloud's free tier, so it sleeps
+when idle. If you see "Your app is waking up," wait a few seconds and it
+will load.
