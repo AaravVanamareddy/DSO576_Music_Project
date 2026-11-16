@@ -102,7 +102,7 @@ REVEALED  48 estimated and only 2 real, Flowers and Blinding Lights. These are t
 
 **Expected:** The deployed `spotify_cleaned_sample.csv` should satisfy the Module 6 cleaning rules the app relies on: `canonical_track_id` unique and nonmissing, no missing values in required display and metric fields, no boundary whitespace in `title` or `track_artist`, and release years inside the slider range. With All genres, 2001–2023, and any success metric, the caption "Estimated streams records in cohort" should equal the share of cohort rows where `streams_total_estimated` is True.
 
-**Actual:** 50 rows × 27 columns. `canonical_track_id` has 0 duplicates and 0 missing values. `title`, `track_artist`, `genre_l1`, `release_year`, `track_popularity`, and `streams_total` each have 0 missing values. Boundary whitespace: 0 titles, 0 artists. Release years range from 2001 to 2023. `streams_total_estimated`: 48 True, 2 False, so the expected caption is 96.0%. The dashboard displayed 【96.0% — confirm on the live app】.
+**Actual:** 50 rows × 27 columns. `canonical_track_id` has 0 duplicates and 0 missing values. `title`, `track_artist`, `genre_l1`, `release_year`, `track_popularity`, and `streams_total` each have 0 missing values. Boundary whitespace: 0 titles, 0 artists. Release years range from 2001 to 2023. `streams_total_estimated`: 48 True, 2 False, so the expected caption is 96.0%. The dashboard displayed 96.0%.
 
 **Evidence:** Independent pandas check on `spotify_cleaned_sample.csv` without importing the app:
 `df["canonical_track_id"].duplicated().sum()` → 0;
