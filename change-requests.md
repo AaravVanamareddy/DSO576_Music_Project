@@ -7,6 +7,7 @@
 | Yolanda | Track Profile / Add to Shortlist | Top 20% Group Count |
 | Elena | Genre Filter / Cohort Update | Median Popularity |
 | Ian Yu | Audio Feature Comparison | Top Group Mean Energy |
+| Hazel | Data Source Integrity / Estimated-Stream Disclosure | Estimated-stream share in cohort |
 
 ## Findings
 
@@ -96,3 +97,21 @@ REVEALED  48 estimated and only 2 real, Flowers and Blinding Lights. These are t
 **Evidence:** I opened Overview using the settings above and inspected the Audio Feature Comparison chart and table. The sample cohort contained 50 tracks, split into 10 Top tracks and 40 Other tracks. An independent pandas calculation from `spotify_cleaned_sample.csv` returned Top mean = 0.720700 and Other mean = 0.591969, which rounds to the displayed values.
 
 **Requested change:** None for the tested sample. The full dataset and other filter settings remain untested.
+
+
+### CHECK-005 — Data Source Integrity / Estimated-Stream Disclosure
+
+**Auditor:** Hazel Yuan
+**Status:** Passed for tested sample
+
+**Expected:** The deployed `spotify_cleaned_sample.csv` should satisfy the Module 6 cleaning rules the app relies on: `canonical_track_id` unique and nonmissing, no missing values in required display and metric fields, no boundary whitespace in `title` or `track_artist`, and release years inside the slider range. With All genres, 2001–2023, and any success metric, the caption "Estimated streams records in cohort" should equal the share of cohort rows where `streams_total_estimated` is True.
+
+**Actual:** 50 rows × 27 columns. `canonical_track_id` has 0 duplicates and 0 missing values. `title`, `track_artist`, `genre_l1`, `release_year`, `track_popularity`, and `streams_total` each have 0 missing values. Boundary whitespace: 0 titles, 0 artists. Release years range from 2001 to 2023. `streams_total_estimated`: 48 True, 2 False, so the expected caption is 96.0%. The dashboard displayed 【96.0% — confirm on the live app】.
+
+**Evidence:** Independent pandas check on `spotify_cleaned_sample.csv` without importing the app:
+`df["canonical_track_id"].duplicated().sum()` → 0;
+`(df["track_artist"] != df["track_artist"].str.strip()).sum()` → 0;
+`df["streams_total_estimated"].value_counts()` → True 48, False 2.
+Note: `canonical_track_id` equals `spotify_id` (the bare 22-character ID), not `track_id` (the `spotify:track:` URI). This works, but it is not documented in the README or BUILD_SPEC.
+
+**Requested change:** None for the tested calculation. Document in the README that `canonical_track_id` = `spotify_id`.
